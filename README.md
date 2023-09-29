@@ -6,7 +6,7 @@ Synonyms API: https://www.synonyms.com/synonyms_api.php
 OpenAPI: https://platform.openai.com/docs/guides/gpt/chat-completions-api
 
 :camera_flash: Here is a screenshot using the OpenAI API is called on Postman:
-<img width="1440" alt="Screenshot 2023-09-02 at 9 33 32 AM" src="https://github.com/shiraliyeva/Group101/assets/97831645/ecbfed09-916e-4bd3-b61d-1f7286e9cb6d">
+<img width="60%" alt="Screenshot 2023-09-29 at 6 09 18 PM" src="https://github.com/shiraliyeva/Group101/assets/97831645/9481df60-487a-45a3-bff9-8fa64b1bd55c">
 
 Here is a screenshot of the output from our Java code:
 <img width="1397" alt="Screenshot 2023-09-29 at 5 24 46 PM" src="https://github.com/shiraliyeva/Group101/assets/97831645/264a3326-f74b-4715-a9f2-ecea67a9d5cc">
