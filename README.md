@@ -1,7 +1,10 @@
 # Group101
 
 ## :information_source: Description
-Our team is dedicated to creating a project aimed at enhancing vocabulary. Users can input an essay or text, and the application will offer improved word choices. Users can also compare their chosen word with the suggested one and determine if the suggestion is more appropriate. Additionally, users have the option to create a digital commonplace book, where they can record their frequently used words and receive alternative word suggestions to enrich their daily vocabulary. This tool is designed to enhance users' proficiency in the English language.
+Our team is dedicated to creating a project aimed at enhancing vocabulary. Users can input an essay or text, and the application will offer improved word choices. 
+Users can also compare their chosen word with the suggested one and determine if the suggestion is more appropriate or ask an AI to explain the difference.
+Additionally, users have the option to create a digital commonplace book, where they can record their frequently used 
+words and receive alternative word suggestions to enrich their daily vocabulary. This tool is designed to enhance users' proficiency in the English language.
 
 ## :gear: Documentation
 We will be integrating the Synonyms API and OpenAI API for this project, here are their links:
