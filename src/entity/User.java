@@ -7,18 +7,18 @@ public class User {
 
     private final String username;
     private final String password;
-    private ArrayList<Text> saved_texts;
+    private ArrayList<InputText> saved_texts;
 
-    public User(String username, String password, ArrayList<Text> savedTexts) {
+    public User(String username, String password, ArrayList<InputText> savedTexts) {
         this.username = username;
         this.password = password;
         saved_texts = savedTexts;
     }
-    public ArrayList<Text> getSaved_texts() {
+    public ArrayList<InputText> getSaved_texts() {
         return saved_texts;
     }
 
-    public void setSaved_texts(ArrayList<Text> saved_texts) {
+    public void setSaved_texts(ArrayList<InputText> saved_texts) {
         this.saved_texts = saved_texts;
     }
 

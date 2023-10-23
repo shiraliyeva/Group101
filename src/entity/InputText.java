@@ -1,9 +1,9 @@
 package entity;
 import java.time.LocalDateTime;
 
-public class Text {
+public class InputText {
     private String title;
-    private String content;
+    private StringBuilder content;
 
     public String getTitle() {
         return title;
@@ -13,11 +13,11 @@ public class Text {
         this.title = title;
     }
 
-    public String getContent() {
+    public StringBuilder getContent() {
         return content;
     }
 
-    public void setContent(String content) {
+    public void setContent(StringBuilder content) {
         this.content = content;
     }
 
@@ -31,7 +31,7 @@ public class Text {
 
     private LocalDateTime modifiedTime;
 
-    public Text(String title, String content, LocalDateTime modifiedTime) {
+    public InputText(String title, StringBuilder content, LocalDateTime modifiedTime) {
         this.title = title;
         this.content = content;
         this.modifiedTime = modifiedTime;
