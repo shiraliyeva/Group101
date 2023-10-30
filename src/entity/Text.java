@@ -1,7 +1,7 @@
 package entity;
 import java.time.LocalDateTime;
 
-public class InputText {
+public class Text {
     private String title;
     private StringBuilder content;
 
@@ -31,7 +31,7 @@ public class InputText {
 
     private LocalDateTime modifiedTime;
 
-    public InputText(String title, StringBuilder content, LocalDateTime modifiedTime) {
+    public Text(String title, StringBuilder content, LocalDateTime modifiedTime) {
         this.title = title;
         this.content = content;
         this.modifiedTime = modifiedTime;
