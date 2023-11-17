@@ -37,11 +37,12 @@ public class Main {
         TextAreaViewModel textAreaViewModel = new TextAreaViewModel();
 
         TextAreaView textAreaView = new TextAreaView(textAreaViewModel);
+
         views.add(textAreaView, textAreaView.viewName);
 
         viewManagerModel.setActiveView(textAreaView.viewName);
         viewManagerModel.firePropertyChanged();
-
+        application.getContentPane().add(new JScrollPane(textAreaView.textArea), BorderLayout.CENTER);
         application.pack();
         application.setVisible(true);
 

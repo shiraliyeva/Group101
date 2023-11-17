@@ -8,13 +8,15 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import interface_adapter.text_area.TextAreaState;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseAdapter;
 
 public class TextAreaView extends JPanel implements ActionListener, PropertyChangeListener {
 
     public final String viewName = "text area";
 
     private final TextAreaViewModel textAreaViewModel;
-    private final JTextArea textArea;
+    public final JTextArea textArea;
 
     public TextAreaView(TextAreaViewModel textAreaViewModel) {
         this.textAreaViewModel = textAreaViewModel;
@@ -41,11 +43,44 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
         mainPanel.add(scrollPane, BorderLayout.CENTER);
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
 
+
         // Set the layout manager of TextAreaView to BorderLayout
         this.setLayout(new BorderLayout());
 
         // Add the mainPanel to the CENTER of TextAreaView
         this.add(mainPanel, BorderLayout.CENTER);
+        JPopupMenu popupMenu = new JPopupMenu();
+        JMenuItem recommendItem = new JMenuItem("Recommend");
+        popupMenu.add(recommendItem);
+        textArea.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                showPopup(e);
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                showPopup(e);
+            }
+
+            private void showPopup(MouseEvent e) {
+                if (e.isPopupTrigger()) {
+                    popupMenu.show(e.getComponent(), e.getX(), e.getY());
+                }
+            }
+
+
+        });
+
+        recommendItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedText = textArea.getSelectedText();
+                handleRecommendClick("Recommend",selectedText);
+            }
+
+        });
+
     }
 
     public void propertyChange(PropertyChangeEvent evt) {
@@ -54,4 +89,9 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
     public void actionPerformed(ActionEvent evt) {
 
     }
+    private static void handleRecommendClick(String option, String text) {
+        System.out.println(option + " chosen");
+        System.out.println(text+ " selected");
+    }
+    private static void execute() {}
 }
