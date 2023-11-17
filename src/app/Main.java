@@ -10,7 +10,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import interface_adapter.ViewManagerModel;
-import interface_adapter.recommend_word.RecommendViewModel;
 import interface_adapter.text_area.TextAreaViewModel;
 import view.ViewManager;
 import view.TextAreaView;
@@ -43,7 +42,6 @@ public class Main {
         viewManagerModel.setActiveView(textAreaView.viewName);
         viewManagerModel.firePropertyChanged();
 
-
         application.pack();
         application.setVisible(true);
 
@@ -52,12 +50,14 @@ public class Main {
                 "it simply and in 50 words."));
         // Prints out a response to the question.
     }
+
     public static String chatGPT(String message) {
         String url = "https://api.openai.com/v1/chat/completions";
         String apiKey = "API_KEY"; // API key goes here.
         // just replace API_KEY
         // with the API key on the Google Doc, keep the quotation marks// .
         String model = "gpt-3.5-turbo"; // current model of chatgpt api
+
         try {
             // Create the HTTP POST request
             URL obj = new URL(url);
@@ -65,6 +65,7 @@ public class Main {
             con.setRequestMethod("POST");
             con.setRequestProperty("Authorization", "Bearer " + apiKey);
             con.setRequestProperty("Content-Type", "application/json");
+
             // Build the request body
             String body = "{\"model\": \"" + model + "\", \"messages\": [{\"role\": \"user\", \"content\": \"" + message + "\"}]}";
             con.setDoOutput(true);
@@ -72,6 +73,7 @@ public class Main {
             writer.write(body);
             writer.flush();
             writer.close();
+
             // Get the response
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             String inputLine;
@@ -80,12 +82,15 @@ public class Main {
                 response.append(inputLine);
             }
             in.close();
+
             // returns the extracted contents of the response.
             return extractContentFromResponse(response.toString());
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
     // This method extracts the response expected from chatgpt and returns it.
     public static String extractContentFromResponse(String response) {
         int startMarker = response.indexOf("content")+11; // Marker for where the content starts.
