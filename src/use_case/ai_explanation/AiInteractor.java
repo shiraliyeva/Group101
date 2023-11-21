@@ -19,6 +19,6 @@ public class AiInteractor implements AiInputBoundary {
         String explanationFromApi = aiDataAccessObject.getAiExplanation(usersWord, suggestedWord);
 
         AiOutputData aiOutputData = new AiOutputData(explanationFromApi);
-        aiOutputBoundary.prepareView(aiOutputData);
+        aiOutputBoundary.prepareSuccessView(aiOutputData);
     }
 }

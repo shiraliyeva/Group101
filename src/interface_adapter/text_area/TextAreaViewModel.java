@@ -10,7 +10,7 @@ public class TextAreaViewModel extends ViewModel {
     public static final String CLEAR_BUTTON_LABEL = "Clear";
     public static final String SAVEASPDF_BUTTON_LABEL = "Save As PDF";
 
-    public static final String GUIDE_TEXT_AREA = "Please input your text here...";
+    public static final String CURRENT_TEXT_LABEL = "Please input your text here...";
     private TextAreaState state = new TextAreaState();
     
 
@@ -35,4 +35,15 @@ public class TextAreaViewModel extends ViewModel {
     public TextAreaState getState() {
         return state;
     }
+
+    public static String currentText = "Please input your text here...";
+
+    public void storeCurrentText(String text) {
+        currentText = text;
+    }
+
+    public String getCurrentText(){
+        return currentText;
+    }
+
 }
