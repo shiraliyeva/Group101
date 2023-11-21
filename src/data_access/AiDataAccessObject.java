@@ -11,7 +11,7 @@ public class AiDataAccessObject implements AiDataAccessInterface {
     @Override
     public String getAiExplanation(String usersWord, String suggestedWord) {
         String url = "https://api.openai.com/v1/chat/completions";
-        String apiKey = "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"; // API key goes here.
+        String apiKey = "API_KEY"; // API key goes here.
         // just replace API_KEY
         // with the API key on the Google Doc, keep the quotation marks// .
         String model = "gpt-3.5-turbo"; // current model of chatgpt api
