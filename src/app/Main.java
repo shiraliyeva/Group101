@@ -10,7 +10,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import interface_adapter.ViewManagerModel;
+import interface_adapter.recommend_word.RecommendViewModel;
+import interface_adapter.text_area.TextAreaPresenter;
 import interface_adapter.text_area.TextAreaViewModel;
+import view.RecommendView;
 import view.ViewManager;
 import view.TextAreaView;
 
@@ -30,19 +33,25 @@ public class Main {
         JPanel views = new JPanel(cardLayout);
         application.add(views);
 
+
         // This keeps track of and manages which view is currently showing.
         ViewManagerModel viewManagerModel = new ViewManagerModel();
         new ViewManager(views, cardLayout, viewManagerModel);
+        RecommendViewModel recommendViewModel = new RecommendViewModel();
 
         TextAreaViewModel textAreaViewModel = new TextAreaViewModel();
+        TextAreaPresenter textAreaPresenter = new TextAreaPresenter(viewManagerModel, recommendViewModel);
 
-        TextAreaView textAreaView = new TextAreaView(textAreaViewModel);
+        TextAreaView textAreaView = new TextAreaView(textAreaViewModel, textAreaPresenter);
+
+
 
         views.add(textAreaView, textAreaView.viewName);
 
+
         viewManagerModel.setActiveView(textAreaView.viewName);
         viewManagerModel.firePropertyChanged();
-        application.getContentPane().add(new JScrollPane(textAreaView.textArea), BorderLayout.CENTER);
+        // application.getContentPane().add(new JScrollPane(textAreaView.textArea), BorderLayout.CENTER);
         application.pack();
         application.setVisible(true);
 

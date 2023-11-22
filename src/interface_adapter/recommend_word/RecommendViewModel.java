@@ -6,13 +6,13 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class RecommendViewModel extends ViewModel {
-    public static final String RECOMMEND_BUTTON_LABEL = "Recommend";
-    public static final String TITLE_LABEL = "Text View";
+    public static final String TITLE_LABEL = "Recommended Word";
     public static final String REPLACE_BUTTON_LABEL = "Replace";
+    public static final String AI_BUTTON_LABEL = "Ask an AI";
     private RecommendState state = new RecommendState();
 
-    public RecommendViewModel(String viewName) {
-        super(viewName);
+    public RecommendViewModel() {
+        super("Recommended Word");
     }
 
     public void setState(RecommendState state) {

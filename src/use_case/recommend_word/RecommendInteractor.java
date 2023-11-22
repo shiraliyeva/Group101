@@ -8,4 +8,9 @@ public class RecommendInteractor implements RecommendInputBoundary {
         this.recommendPresenter = recommendPresenter;
     }
 
+    @Override
+    public void execute(RecommendInputData recommendInputData) {
+        RecommendOutputData recommendOutputData = new RecommendOutputData("bread");
+        recommendPresenter.prepareRecommendView(recommendOutputData);
+    }
 }

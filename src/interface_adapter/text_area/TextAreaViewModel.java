@@ -37,5 +37,4 @@ public class TextAreaViewModel extends ViewModel {
         return state;
     }
 
-    JPopupMenu popupMenu = new JPopupMenu("recommend");
 }
