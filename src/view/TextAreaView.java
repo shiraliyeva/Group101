@@ -1,6 +1,5 @@
 package view;
 
-import interface_adapter.text_area.TextAreaController;
 import interface_adapter.text_area.TextAreaViewModel;
 import javax.swing.*;
 import java.awt.*;
@@ -8,27 +7,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import interface_adapter.text_area.TextAreaState;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
-import interface_adapter.text_area.TextAreaPresenter;
-
-import use_case.recommend_word.RecommendOutputData;
-import view.RecommendView;
+import interface_adapter.recommend_word.RecommendPresenter;
+import interface_adapter.recommend_word.RecommendController;
 
 public class TextAreaView extends JPanel implements ActionListener, PropertyChangeListener {
 
     public final String viewName = "text area";
 
-    private final TextAreaViewModel textAreaViewModel;
+    private TextAreaViewModel textAreaViewModel;
     public final JTextArea textArea;
 
-    private final TextAreaPresenter textAreaPresenter;
+    private RecommendPresenter recommendPresenter;
 
-
-    public TextAreaView(TextAreaViewModel textAreaViewModel, TextAreaPresenter textAreaPresenter) {
-        this.textAreaPresenter = textAreaPresenter;
+    public TextAreaView(TextAreaViewModel textAreaViewModel,
+                        RecommendPresenter recommendPresenter) {
+        this.recommendPresenter = recommendPresenter;
         this.textAreaViewModel = textAreaViewModel;
+
 
         this.textAreaViewModel.addPropertyChangeListener(this);
         JPanel buttonPanel = new JPanel();
@@ -83,6 +80,7 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
 
         });
 
+
         recommendItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -103,11 +101,9 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
     private void handleRecommendClick(String option, String text) {
         System.out.println(option + " chosen");
         System.out.println(text+ " selected");
-        this.textAreaPresenter.prepareRecommendView(new RecommendOutputData("bread"));
-
-
-
+        this.recommendPresenter.prepareRecommendView(recommendPresenter.getRecommendation(text),this);
     }
 
-
 }
+
+

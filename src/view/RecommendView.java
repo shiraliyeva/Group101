@@ -1,5 +1,6 @@
 package view;
 
+import entity.Text;
 import interface_adapter.recommend_word.RecommendViewModel;
 import interface_adapter.text_area.TextAreaViewModel;
 
@@ -11,35 +12,48 @@ import java.beans.PropertyChangeListener;
 import java.awt.*;
 
 public class RecommendView extends JPanel implements ActionListener, PropertyChangeListener{
-    public final String viewName = "recommendation";
     private final RecommendViewModel recommendViewModel;
+    private final TextAreaView textAreaView;
 
-    public RecommendView(RecommendViewModel recommendViewModel) {
+
+
+    public RecommendView(RecommendViewModel recommendViewModel, StringBuilder recommendation, TextAreaView textAreaView) {
 
         JFrame frame = new JFrame("Recommendation");
 
-        frame.setSize(200,200);
-        CardLayout cardLayout1 = new CardLayout();
-        JPanel views1 = new JPanel((cardLayout1));
+        frame.setSize(500,500);
+        JLabel recommend = new JLabel(recommendation.toString());
 
         this.recommendViewModel=recommendViewModel;
-        this.addPropertyChangeListener(this);
-        JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        this.recommendViewModel.addPropertyChangeListener(this);
+        this.textAreaView=textAreaView;
+        JPanel mainPanel = new JPanel();
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+
         JButton replaceButton = new JButton(RecommendViewModel.REPLACE_BUTTON_LABEL);
         JButton aiButton = new JButton(RecommendViewModel.AI_BUTTON_LABEL);
-        panel.add(replaceButton);
-        panel.add(aiButton);
-        JPanel mainPanel = new JPanel(new BorderLayout());
-        mainPanel.add(panel, BorderLayout.SOUTH);
+        buttonPanel.add(replaceButton);
+        buttonPanel.add(aiButton);
+
         this.setLayout(new BorderLayout());
-        frame.add(views1);
-        frame.getContentPane().add(new JScrollPane(panel), BorderLayout.CENTER);
+        frame.getContentPane().add(new JScrollPane(mainPanel), BorderLayout.CENTER);
+        mainPanel.add(recommend, BorderLayout.NORTH);
+        mainPanel.add(buttonPanel, BorderLayout.SOUTH);
+
+        frame.pack();
         frame.setVisible(true);
+        replaceButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // This method is called when the button is clicked
+                textAreaView.textArea.getSelectedText();
+                textAreaView.textArea.replaceSelection(recommendation.toString());
+            }
+        });
 
 
-        // Add the mainPanel to the CENTER of TextAreaView
-        this.add(mainPanel, BorderLayout.CENTER);
+
 
     }
 

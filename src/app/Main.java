@@ -9,11 +9,13 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import entity.Text;
 import interface_adapter.ViewManagerModel;
+import interface_adapter.recommend_word.RecommendController;
 import interface_adapter.recommend_word.RecommendViewModel;
-import interface_adapter.text_area.TextAreaPresenter;
+import interface_adapter.recommend_word.RecommendPresenter;
 import interface_adapter.text_area.TextAreaViewModel;
-import view.RecommendView;
+import use_case.recommend_word.RecommendInteractor;
 import view.ViewManager;
 import view.TextAreaView;
 
@@ -39,10 +41,14 @@ public class Main {
         new ViewManager(views, cardLayout, viewManagerModel);
         RecommendViewModel recommendViewModel = new RecommendViewModel();
 
-        TextAreaViewModel textAreaViewModel = new TextAreaViewModel();
-        TextAreaPresenter textAreaPresenter = new TextAreaPresenter(viewManagerModel, recommendViewModel);
 
-        TextAreaView textAreaView = new TextAreaView(textAreaViewModel, textAreaPresenter);
+        TextAreaViewModel textAreaViewModel = new TextAreaViewModel();
+        RecommendPresenter recommendPresenter = new RecommendPresenter(viewManagerModel, recommendViewModel);
+
+
+        TextAreaView textAreaView = new TextAreaView(textAreaViewModel, recommendPresenter);
+
+
 
 
 
