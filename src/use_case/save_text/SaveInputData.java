@@ -2,14 +2,13 @@ package use_case.save_text;
 import entity.Text;
 
 public class SaveInputData {
-    private String text;
+    private final String text;
 
-    public void InputText(){
-        this.text = "";
+    public SaveInputData(String text){
+        this.text = text;
     }
-    // get the text from the implementation fidan did
 
-    String getText() {
+    public String getText() {
         return this.text;
     }
 }

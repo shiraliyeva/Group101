@@ -1,21 +1,26 @@
 package interface_adapter.save_text;
 
-import use_case.save_text.SaveInputData;
+import data_access.FileUserDataAccessObject;
+import data_access.SaveDataAccessObject;
 import use_case.save_text.SaveOutputBoundary;
+import use_case.save_text.SaveOutputData;
+
 
 public class SavePresenter implements SaveOutputBoundary {
     private final SaveViewModel saveViewModel;
+
+
 
     public SavePresenter(SaveViewModel saveViewModel) {
         this.saveViewModel = saveViewModel;
     }
 
-    public void success(SaveInputData inputData) {
-        this.saveViewModel.firePropertyChanged();
+    @Override
+    public void prepareSaveView(SaveOutputData outputData) {
+        this.saveViewModel.setContent(outputData.getOutputText());
+        final SaveDataAccessObject saveDataAccessObject = new SaveDataAccessObject(outputData.getOutputText());
+        SaveDataAccessObject.saveToPDF(outputData.getOutputText());
 
-    }
-
-    public void prepareFailView(String error) {
-        saveViewModel.firePropertyChanged();
     }
 }
+

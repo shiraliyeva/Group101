@@ -3,14 +3,16 @@ package interface_adapter.clear_text;
 import use_case.clear_text.ClearInputBoundary;
 import use_case.clear_text.ClearInputData;
 
-public class ClearController {
-    final ClearInputBoundary userClearUseCaseInteractor;
 
-    public ClearController(ClearInputBoundary userClearUseCaseInteractor) {
-        this.userClearUseCaseInteractor = userClearUseCaseInteractor;
+public class ClearController {
+    final ClearInputBoundary clearUseCaseInteractor;
+
+    public ClearController(ClearInputBoundary clearUseCaseInteractor) {
+        this.clearUseCaseInteractor = clearUseCaseInteractor;
     }
 
     public void execute() {
-        userClearUseCaseInteractor.ClearData();
+        ClearInputData clearInputData = new ClearInputData();
+        this.clearUseCaseInteractor.execute(clearInputData);
     }
 }

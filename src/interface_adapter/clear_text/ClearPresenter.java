@@ -1,31 +1,29 @@
 package interface_adapter.clear_text;
 
+import interface_adapter.ViewManagerModel;
 import use_case.clear_text.ClearOutputBoundary;
 import use_case.clear_text.ClearOutputData;
 
-import java.beans.PropertyChangeEvent;
-
-// TODO Complete me, the ViewManagerModel Should contain the whole view of the program and that should
-// show the successView
+import javax.swing.*;
 
 public class ClearPresenter implements ClearOutputBoundary {
     private final ClearViewModel clearViewModel;
-//    private final ViewManagerModel viewManagerModel;
+    private final JTextArea textArea;
 
-    public ClearPresenter(ClearViewModel view) {
+    ViewManagerModel viewManagerModel = new ViewManagerModel();
+
+    public ClearPresenter(ClearViewModel view, JTextArea textArea) {
         this.clearViewModel = view;
-//        this.viewManagerModel = viewManagerModel;
+        this.textArea = textArea;
     }
 
     @Override
-    public void prepareSuccessView(ClearOutputData clearOutputData) {
+    public void prepareClearView(ClearOutputData clearOutputData) {
         clearViewModel.firePropertyChanged();
-
-//        viewManagerModel.setActiveView(clearViewModel.getViewName());
-//        viewManagerModel.firePropertyChanged();
-//        viewManagerModel.showSuccessView();
+        viewManagerModel.setActiveView(clearViewModel.getViewName());
+        viewManagerModel.firePropertyChanged();
+        textArea.setText(clearOutputData.setData());
+    }
     }
 
-    }
-}
 

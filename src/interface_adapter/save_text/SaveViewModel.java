@@ -24,8 +24,4 @@ public class SaveViewModel {
     void firePropertyChanged()  {
         support.firePropertyChange("content", null, this.content);
     }
-
-    public void addPropertyChangeListener(PropertyChangeListener listener) {
-        support.addPropertyChangeListener(listener);
-    }
 }

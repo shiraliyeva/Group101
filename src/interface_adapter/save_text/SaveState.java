@@ -1,8 +1,8 @@
 package interface_adapter.save_text;
 
 public class SaveState {
-    private boolean saveSuccessful;
-    private String errorMessage;
+    private final boolean saveSuccessful;
+    private final String errorMessage;
 
     public SaveState(boolean saveSuccessful, String errorMessage) {
         this.saveSuccessful = saveSuccessful;

@@ -1,14 +1,18 @@
 package use_case.clear_text;
 
 public class ClearInteractor implements ClearInputBoundary{
-    final ClearOutputBoundary clearPresenter;
+    final ClearOutputBoundary userPresenter;
 
-    public ClearInteractor(ClearOutputBoundary clearPresenter) {
-        this.clearPresenter = clearPresenter;
+
+    public ClearInteractor(ClearOutputBoundary userPresenter) {
+        this.userPresenter = userPresenter;
     }
 
-    public void ClearData() {
+
+    @Override
+    public void execute(ClearInputData clearInputData) {
         ClearOutputData clearOutputData = new ClearOutputData();
-        clearPresenter.prepareSuccessView(clearOutputData);
+        userPresenter.prepareClearView(clearOutputData);
+
     }
 }
