@@ -1,5 +1,6 @@
 package view;
 
+import interface_adapter.recommend_word.RecommendViewModel;
 import interface_adapter.text_area.TextAreaViewModel;
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +10,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
-import interface_adapter.recommend_word.RecommendPresenter;
+
 import interface_adapter.recommend_word.RecommendController;
 
 public class TextAreaView extends JPanel implements ActionListener, PropertyChangeListener {
@@ -19,14 +20,14 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
     private TextAreaViewModel textAreaViewModel;
     public final JTextArea textArea;
 
-    private RecommendPresenter recommendPresenter;
+    private RecommendController recommendController;
 
-    public TextAreaView(TextAreaViewModel textAreaViewModel,
-                        RecommendPresenter recommendPresenter) {
-        this.recommendPresenter = recommendPresenter;
+
+
+    public TextAreaView(RecommendController recommendController,TextAreaViewModel textAreaViewModel) {
+//        this.recommendPresenter = recommendPresenter;
         this.textAreaViewModel = textAreaViewModel;
-
-
+        this.recommendController= recommendController;
         this.textAreaViewModel.addPropertyChangeListener(this);
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -101,7 +102,11 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
     private void handleRecommendClick(String option, String text) {
         System.out.println(option + " chosen");
         System.out.println(text+ " selected");
-        this.recommendPresenter.prepareRecommendView(recommendPresenter.getRecommendation(text),this);
+//        this.recommendPresenter.prepareRecommendView(recommendPresenter.getRecommendation(text),this);
+        String recommendation=recommendController.execute(text);
+        new RecommendView(new RecommendViewModel(),this,recommendation);
+
+
     }
 
 }

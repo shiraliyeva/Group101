@@ -1,23 +1,18 @@
 package use_case.recommend_word;
 
-import javax.swing.*;
-
 public class RecommendInteractor implements RecommendInputBoundary {
+
+    private final RecommendDataAccessInterface recommendDataAccessObject;
     final RecommendOutputBoundary recommendPresenter;
 
-    public RecommendInteractor(RecommendOutputBoundary recommendOutputBoundary) {
+    public RecommendInteractor(RecommendDataAccessInterface recommendDataAccessObject, RecommendOutputBoundary recommendOutputBoundary) {
+        this.recommendDataAccessObject = recommendDataAccessObject;
 
         this.recommendPresenter = recommendOutputBoundary;
     }
 
-    public void replaceRecommendation(JTextArea textArea,String s,int start, int end) {
-        textArea.replaceRange(s,start,end);
-
-
-
-    }
     @Override
-    public void findRecommendation(String recommendInputData) {
-
+    public String execute(String recommendInputData) {
+        return recommendDataAccessObject.getRecommendation(recommendInputData);
     }
 }

@@ -14,15 +14,17 @@ import java.awt.*;
 public class RecommendView extends JPanel implements ActionListener, PropertyChangeListener{
     private final RecommendViewModel recommendViewModel;
     private final TextAreaView textAreaView;
+    public final String viewName="Recommendation";
+    private String recommendation;
 
 
-
-    public RecommendView(RecommendViewModel recommendViewModel, StringBuilder recommendation, TextAreaView textAreaView) {
+    public RecommendView(RecommendViewModel recommendViewModel, TextAreaView textAreaView, String recommendation) {
+        this.recommendation=recommendation;
 
         JFrame frame = new JFrame("Recommendation");
 
         frame.setSize(500,500);
-        JLabel recommend = new JLabel(recommendation.toString());
+        JLabel recommend = new JLabel(recommendation);
 
         this.recommendViewModel=recommendViewModel;
         this.recommendViewModel.addPropertyChangeListener(this);
@@ -48,7 +50,7 @@ public class RecommendView extends JPanel implements ActionListener, PropertyCha
             public void actionPerformed(ActionEvent e) {
                 // This method is called when the button is clicked
                 textAreaView.textArea.getSelectedText();
-                textAreaView.textArea.replaceSelection(recommendation.toString());
+                textAreaView.textArea.replaceSelection(recommendation);
             }
         });
 

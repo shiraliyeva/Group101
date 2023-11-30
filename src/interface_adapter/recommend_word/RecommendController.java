@@ -9,9 +9,9 @@ public class RecommendController {
         this.recommendUseCaseInteractor = recommendUseCaseInteractor;
     }
 
-    public void findRecommendation(String recommendInputData) {
+    public String execute(String recommendInputData) {
 
-        recommendUseCaseInteractor.findRecommendation(recommendInputData);
+        return recommendUseCaseInteractor.execute(recommendInputData);
     }
 
 }

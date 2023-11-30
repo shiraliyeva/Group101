@@ -16,6 +16,7 @@ import interface_adapter.recommend_word.RecommendViewModel;
 import interface_adapter.recommend_word.RecommendPresenter;
 import interface_adapter.text_area.TextAreaViewModel;
 import use_case.recommend_word.RecommendInteractor;
+import view.RecommendView;
 import view.ViewManager;
 import view.TextAreaView;
 
@@ -43,16 +44,20 @@ public class Main {
 
 
         TextAreaViewModel textAreaViewModel = new TextAreaViewModel();
-        RecommendPresenter recommendPresenter = new RecommendPresenter(viewManagerModel, recommendViewModel);
+//        RecommendPresenter recommendPresenter = new RecommendPresenter(viewManagerModel, recommendViewModel);
+        RecommendController recommendController = RecommendWordUseCaseFactory.createRecommendController(viewManagerModel, recommendViewModel);
 
 
-        TextAreaView textAreaView = new TextAreaView(textAreaViewModel, recommendPresenter);
+        TextAreaView textAreaView = new TextAreaView(recommendController, textAreaViewModel);
+
 
 
 
 
 
         views.add(textAreaView, textAreaView.viewName);
+//        RecommendView recommendView= RecommendWordUseCaseFactory.createRecommendView(recommendViewModel, textAreaView);
+//        views.add(recommendView, recommendView.viewName);
 
 
         viewManagerModel.setActiveView(textAreaView.viewName);
