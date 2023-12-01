@@ -8,16 +8,14 @@ import java.awt.print.PrinterJob;
 
 public class SaveDataAccessObject {
 
-    private final String text;
 
-    public SaveDataAccessObject(String text){
-        this.text = text;
+    public SaveDataAccessObject(){
 
     }
 
     public static void saveToPDF(String text) {
         PrinterJob job = PrinterJob.getPrinterJob();
-        job.setJobName("Save to PDF");
+        job.setJobName("Save to PDF/Print");
 
         job.setPrintable(new Printable() {
             public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) {
