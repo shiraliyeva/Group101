@@ -10,6 +10,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import interface_adapter.ViewManagerModel;
+import interface_adapter.recommend_word.RecommendController;
+import interface_adapter.recommend_word.RecommendViewModel;
 import interface_adapter.text_area.TextAreaViewModel;
 import view.ViewManager;
 import view.TextAreaView;
@@ -30,18 +32,29 @@ public class Main {
         JPanel views = new JPanel(cardLayout);
         application.add(views);
 
+
         // This keeps track of and manages which view is currently showing.
         ViewManagerModel viewManagerModel = new ViewManagerModel();
         new ViewManager(views, cardLayout, viewManagerModel);
+        RecommendViewModel recommendViewModel = new RecommendViewModel();
+
 
         TextAreaViewModel textAreaViewModel = new TextAreaViewModel();
+        RecommendController recommendController = RecommendWordUseCaseFactory.createRecommendController(viewManagerModel, recommendViewModel);
 
-        TextAreaView textAreaView = new TextAreaView(textAreaViewModel);
+
+        TextAreaView textAreaView = new TextAreaView(recommendController, textAreaViewModel);
+
+
+
+
+
+
         views.add(textAreaView, textAreaView.viewName);
+
 
         viewManagerModel.setActiveView(textAreaView.viewName);
         viewManagerModel.firePropertyChanged();
-
         application.pack();
         application.setVisible(true);
 

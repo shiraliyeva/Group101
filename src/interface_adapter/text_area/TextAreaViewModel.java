@@ -2,6 +2,7 @@ package interface_adapter.text_area;
 
 import interface_adapter.ViewModel;
 
+import javax.swing.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
@@ -35,4 +36,5 @@ public class TextAreaViewModel extends ViewModel {
     public TextAreaState getState() {
         return state;
     }
+
 }
