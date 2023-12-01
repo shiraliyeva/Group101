@@ -1,5 +1,6 @@
 package view;
 
+import app.Main;
 import interface_adapter.clear_text.ClearController;
 import interface_adapter.clear_text.ClearPresenter;
 import interface_adapter.clear_text.ClearViewModel;
@@ -14,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.concurrent.Executor;
 
 import use_case.clear_text.*;
 import use_case.save_text.*;
@@ -23,11 +25,17 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
     public final String viewName = "text area";
 
     private final TextAreaViewModel textAreaViewModel;
-//    private final SaveController saveController;
     private final JTextArea textArea;
 
-    public TextAreaView(TextAreaViewModel textAreaViewModel) {
+    private ClearController clearController;
+
+    private SaveController saveController;
+
+
+    public TextAreaView(ClearController clearController,SaveController saveController,TextAreaViewModel textAreaViewModel) {
         this.textAreaViewModel = textAreaViewModel;
+        this.clearController = clearController;
+        this.saveController = saveController;
         this.textAreaViewModel.addPropertyChangeListener(this);
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -39,7 +47,7 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
 
         // Create a JTextArea
         textArea = new JTextArea(10, 30);
-        textArea.setText(TextAreaViewModel.GUIDE_TEXT_AREA);
+        textArea.setText(TextAreaViewModel.currentText);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
 
@@ -58,34 +66,21 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
         this.add(mainPanel, BorderLayout.CENTER);
 
         clearButton.addActionListener(new ActionListener() {
-            final ClearViewModel clearViewModel = new ClearViewModel();
-
-            final ClearOutputBoundary clearOutputBoundary = new ClearPresenter(clearViewModel, textArea);
-
-            final ClearInputBoundary clearUseCaseInteractor = new ClearInteractor(clearOutputBoundary);
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource().equals(clearButton)) {
-
-                    ClearController clearController = new ClearController(clearUseCaseInteractor);
                     clearController.execute();
+                    textArea.setText(textAreaViewModel.getCurrentText());
                 }
             }
         });
 
         saveButton.addActionListener(new ActionListener() {
 
-            final SaveViewModel saveViewModel = new SaveViewModel();
-
-            final SaveOutputBoundary saveOutputBoundary = new SavePresenter(saveViewModel);
-
-            final SaveInputBoundary saveUseCaseInteractor = new SaveInteractor(saveOutputBoundary);
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource().equals(saveButton)) {
                     SaveInputData saveInputData = new SaveInputData(textArea.getText());
-
-                    SaveController saveController = new SaveController(saveUseCaseInteractor);
                     saveController.execute(saveInputData.getText());
                 }
             }

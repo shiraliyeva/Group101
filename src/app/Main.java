@@ -10,11 +10,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import interface_adapter.ViewManagerModel;
+
 import interface_adapter.clear_text.ClearController;
+import interface_adapter.clear_text.ClearViewModel;
 import interface_adapter.save_text.SaveController;
+import interface_adapter.save_text.SaveViewModel;
 import interface_adapter.text_area.TextAreaViewModel;
-import use_case.clear_text.ClearInputBoundary;
-import use_case.clear_text.ClearInputData;
+
 import view.ViewManager;
 import view.TextAreaView;
 
@@ -43,12 +45,19 @@ public class Main {
 
 
         TextAreaViewModel textAreaViewModel = new TextAreaViewModel();
+        ClearViewModel clearViewModel = new ClearViewModel();
+        SaveViewModel saveViewModel = new SaveViewModel();
 
-        TextAreaView textAreaView = new TextAreaView(textAreaViewModel);
+        ClearController clearController = ClearUseCaseFactory.create(viewManagerModel, clearViewModel, textAreaViewModel);
+        SaveController saveController = SaveUseCaseFactory.create(viewManagerModel, saveViewModel);
+
+        TextAreaView textAreaView = new TextAreaView(clearController, saveController,textAreaViewModel);
         views.add(textAreaView, textAreaView.viewName);
 
         viewManagerModel.setActiveView(textAreaView.viewName);
         viewManagerModel.firePropertyChanged();
+
+
 
         application.pack();
         application.setVisible(true);
@@ -57,6 +66,8 @@ public class Main {
                 "Tell me the difference between 'smart' and 'wise' but explain " +
                 "it simply and in 50 words."));
         // Prints out a response to the question.
+
+
     }
 
     public static String chatGPT(String message) {
@@ -105,5 +116,7 @@ public class Main {
         int endMarker = response.indexOf("\"", startMarker); // Marker for where the content ends.
         return response.substring(startMarker, endMarker); // Returns the substring containing only the response.
     }
+
+
 
 }

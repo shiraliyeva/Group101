@@ -24,6 +24,7 @@ public class ClearViewModel{
         this.state = state;
     }
 
+
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public void firePropertyChanged() {
