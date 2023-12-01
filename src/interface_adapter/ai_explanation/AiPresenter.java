@@ -20,7 +20,7 @@ public class AiPresenter implements AiOutputBoundary {
 
     @Override
     public void prepareSuccessView(AiOutputData response) {
-        // On success, switch to the logged in view.
+        // On success, switch to the view.
 
         AiState aiState = aiViewModel.getState();
         aiState.setExplanation(response.getExplanation());

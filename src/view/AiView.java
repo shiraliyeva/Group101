@@ -56,6 +56,7 @@ public class AiView extends JPanel implements ActionListener, PropertyChangeList
             public void actionPerformed(ActionEvent evt) {
                 if (evt.getSource() == backButton) {
                     // Create and switch to a new TextAreaView
+//                    TextAreaView newTextAreaView = new TextAreaView(aiController, textAreaViewModel);
                     TextAreaView newTextAreaView = new TextAreaView(aiController, textAreaViewModel, AiView.this);
                     views.add(newTextAreaView, newTextAreaView.viewName);
                     cardLayout.show(views, newTextAreaView.viewName);

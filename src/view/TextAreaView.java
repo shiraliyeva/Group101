@@ -17,10 +17,12 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
     private final TextAreaViewModel textAreaViewModel;
     private final JTextArea textArea;
     private final AiView aiView;
+
     public TextAreaView(AiController aiController, TextAreaViewModel textAreaViewModel, AiView aiView) {
+        this.aiView = aiView;
         this.textAreaViewModel = textAreaViewModel;
         this.textAreaViewModel.addPropertyChangeListener(this);
-        this.aiView = aiView;
+//        this.aiView = aiView;
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
@@ -34,7 +36,7 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
         askAIButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                aiController.execute("happy", "ecstatic");
+                aiController.execute("chore", "task");
                 aiView.updateDescriptionLabel();
 //                String previousText = textArea.getText();
 //                System.out.println("Text in the JTextArea: " + previousText);

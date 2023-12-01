@@ -2,11 +2,11 @@ package use_case.ai_explanation;
 
 public class AiInteractor implements AiInputBoundary {
     private final AiDataAccessInterface aiDataAccessObject;
-    private final AiOutputBoundary aiOutputBoundary;
+    private final AiOutputBoundary aiPresenter;
 
-    public AiInteractor(AiDataAccessInterface aiDataAccessObject, AiOutputBoundary aiOutputBoundary) {
+    public AiInteractor(AiDataAccessInterface aiDataAccessObject, AiOutputBoundary aiPresenter) {
         this.aiDataAccessObject = aiDataAccessObject;
-        this.aiOutputBoundary = aiOutputBoundary;
+        this.aiPresenter = aiPresenter;
     }
 
     @Override
@@ -19,6 +19,6 @@ public class AiInteractor implements AiInputBoundary {
         String explanationFromApi = aiDataAccessObject.getAiExplanation(usersWord, suggestedWord);
 
         AiOutputData aiOutputData = new AiOutputData(explanationFromApi);
-        aiOutputBoundary.prepareSuccessView(aiOutputData);
+        aiPresenter.prepareSuccessView(aiOutputData);
     }
 }
