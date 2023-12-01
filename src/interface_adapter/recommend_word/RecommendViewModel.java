@@ -18,7 +18,7 @@ public class RecommendViewModel extends ViewModel {
     public void setState(RecommendState state) {
         this.state = state;
     }
-    // public String getState() {return state;}
+
 
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 

@@ -25,7 +25,6 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
 
 
     public TextAreaView(RecommendController recommendController,TextAreaViewModel textAreaViewModel) {
-//        this.recommendPresenter = recommendPresenter;
         this.textAreaViewModel = textAreaViewModel;
         this.recommendController= recommendController;
         this.textAreaViewModel.addPropertyChangeListener(this);
@@ -102,9 +101,9 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
     private void handleRecommendClick(String option, String text) {
         System.out.println(option + " chosen");
         System.out.println(text+ " selected");
-//        this.recommendPresenter.prepareRecommendView(recommendPresenter.getRecommendation(text),this);
         String recommendation=recommendController.execute(text);
         new RecommendView(new RecommendViewModel(),this,recommendation);
+
 
 
     }

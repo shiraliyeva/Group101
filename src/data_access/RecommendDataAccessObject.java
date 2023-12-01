@@ -15,7 +15,7 @@ public class RecommendDataAccessObject implements RecommendDataAccessInterface {
     public String getRecommendation(String text) {
         String apiUrl = "https://www.stands4.com/services/v2/syno.php?uid=12086&tokenid=CdUkpotEswlcqlbU&word=" + text;
 
-        try {
+        try { // calls the API
 
             URL url = new URL(apiUrl);
 
@@ -40,6 +40,7 @@ public class RecommendDataAccessObject implements RecommendDataAccessInterface {
             int start=response.indexOf("<synonyms>");
             int end=response.indexOf("</synonyms>");
             System.out.println(response);
+            // deletes the unnecessary JSON parts
 
             response.delete(end,response.length());
             response.delete(0,start);

@@ -1,7 +1,6 @@
 package app;
 
 import data_access.RecommendDataAccessObject;
-import entity.Text;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.recommend_word.RecommendController;
 import interface_adapter.recommend_word.RecommendPresenter;
@@ -17,7 +16,7 @@ public class RecommendWordUseCaseFactory {
         return new RecommendView(recommendViewModel, textAreaView, null);
 
     }
-    public static RecommendController createRecommendController(ViewManagerModel viewManagerModel,
+    static RecommendController createRecommendController(ViewManagerModel viewManagerModel,
                                                                 RecommendViewModel recommendViewModel) {
         RecommendDataAccessObject recommendDataAccessObject= new RecommendDataAccessObject();
         RecommendOutputBoundary recommendOutputBoundary = new RecommendPresenter(viewManagerModel, recommendViewModel);

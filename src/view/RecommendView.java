@@ -1,8 +1,7 @@
 package view;
 
-import entity.Text;
 import interface_adapter.recommend_word.RecommendViewModel;
-import interface_adapter.text_area.TextAreaViewModel;
+
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -48,7 +47,7 @@ public class RecommendView extends JPanel implements ActionListener, PropertyCha
         replaceButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // This method is called when the button is clicked
+                // This method is called when the replace button is clicked
                 textAreaView.textArea.getSelectedText();
                 textAreaView.textArea.replaceSelection(recommendation);
             }
