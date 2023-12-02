@@ -38,14 +38,12 @@ public class RecommendDataAccessObject implements RecommendDataAccessInterface {
             connection.disconnect();
             int start=response.indexOf("<synonyms>");
             int end=response.indexOf("</synonyms>");
-            System.out.println(response);
             // deletes the unnecessary JSON parts
 
             response.delete(end,response.length());
             response.delete(0,start);
             start=response.indexOf(">");
             response.delete(0,start+1);
-            System.out.println(response);
             end=response.indexOf(",");
             response.delete(end,response.length());
 
