@@ -1,7 +1,7 @@
 package interface_adapter.recommend_word;
 
 public class RecommendState {
-    private StringBuilder recommendText = new StringBuilder();
+    private String recommendText = "";
     public RecommendState() {
 
     }
@@ -9,10 +9,10 @@ public class RecommendState {
         recommendText = copy.recommendText;
     }
 
-    public StringBuilder getRecommendText() {
+    public String getRecommendText() {
         return recommendText;
     }
-    public void setRecommendText(StringBuilder text) {
+    public void setRecommendText(String text) {
         this.recommendText=text;
 
     }
