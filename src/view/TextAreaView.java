@@ -1,6 +1,7 @@
 package view;
 
 
+import interface_adapter.ai_explanation.AiController;
 import interface_adapter.clear_text.ClearController;
 import interface_adapter.save_text.SaveController;
 
@@ -23,6 +24,7 @@ import interface_adapter.recommend_word.RecommendController;
 public class TextAreaView extends JPanel implements ActionListener, PropertyChangeListener {
 
     public final String viewName = "text area";
+    private final AiController aiController;
 
     private TextAreaViewModel textAreaViewModel;
     public final JTextArea textArea;
@@ -35,8 +37,11 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
     private SaveController saveController;
 
 
-    public TextAreaView(RecommendController recommendController, ClearController clearController,SaveController saveController,TextAreaViewModel textAreaViewModel) {
+    public TextAreaView(AiController aiController, RecommendController recommendController,
+                        ClearController clearController, SaveController saveController,
+                        TextAreaViewModel textAreaViewModel) {
         this.textAreaViewModel = textAreaViewModel;
+        this.aiController = aiController;
         this.clearController = clearController;
         this.saveController = saveController;
         this.recommendController= recommendController;
@@ -119,7 +124,7 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
             @Override
             public void actionPerformed(ActionEvent e) {
                 String selectedText = textArea.getSelectedText();
-                handleRecommendClick("Recommend",selectedText);
+                handleRecommendClick(selectedText);
             }
 
         });
@@ -131,11 +136,9 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
 
     public void actionPerformed(ActionEvent evt) {
     }
-    private void handleRecommendClick(String option, String text) {
-        System.out.println(option + " chosen");
-        System.out.println(text+ " selected");
-        String recommendation=recommendController.execute(text);
-        new RecommendView(new RecommendViewModel(),this,recommendation);
+    private void handleRecommendClick(String text) {
+        String recommendation = recommendController.execute(text);
+        new RecommendView(this.aiController, new RecommendViewModel(),this,recommendation);
 
 
 

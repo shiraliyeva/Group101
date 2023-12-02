@@ -2,6 +2,7 @@ package app;
 
 import data_access.RecommendDataAccessObject;
 import interface_adapter.ViewManagerModel;
+import interface_adapter.ai_explanation.AiController;
 import interface_adapter.recommend_word.RecommendController;
 import interface_adapter.recommend_word.RecommendPresenter;
 import interface_adapter.recommend_word.RecommendViewModel;
@@ -11,9 +12,9 @@ import view.RecommendView;
 import view.TextAreaView;
 
 public class RecommendWordUseCaseFactory {
-    public static RecommendView createRecommendView(RecommendViewModel recommendViewModel, TextAreaView textAreaView) {
+    public static RecommendView createRecommendView(AiController aiController, RecommendViewModel recommendViewModel, TextAreaView textAreaView) {
 
-        return new RecommendView(recommendViewModel, textAreaView, null);
+        return new RecommendView(aiController, recommendViewModel, textAreaView, null);
 
     }
     static RecommendController createRecommendController(ViewManagerModel viewManagerModel,
