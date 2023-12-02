@@ -1,5 +1,6 @@
 package view;
 
+import interface_adapter.recommend_word.RecommendState;
 import interface_adapter.recommend_word.RecommendViewModel;
 import interface_adapter.text_area.TextAreaViewModel;
 import javax.swing.*;
