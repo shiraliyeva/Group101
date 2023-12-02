@@ -9,7 +9,7 @@ import java.beans.PropertyChangeSupport;
 public class TextAreaViewModel extends ViewModel {
 
     public static final String CLEAR_BUTTON_LABEL = "Clear";
-    public static final String SAVEASPDF_BUTTON_LABEL = "Save As PDF";
+    public static final String SAVEASPDF_BUTTON_LABEL = "Print/Save";
 
     public static final String GUIDE_TEXT_AREA = "Please input your text here...";
     private TextAreaState state = new TextAreaState();
@@ -31,6 +31,16 @@ public class TextAreaViewModel extends ViewModel {
 
     public void addPropertyChangeListener(PropertyChangeListener listener){
         support.addPropertyChangeListener(listener);
+    }
+
+    public static String currentText = "Please input your text here...";
+
+    public void storeCurrentText(String text) {
+        currentText = text;
+    }
+
+    public String getCurrentText(){
+        return currentText;
     }
 
     public TextAreaState getState() {
