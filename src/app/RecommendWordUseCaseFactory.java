@@ -12,13 +12,21 @@ import view.RecommendView;
 import view.TextAreaView;
 
 public class RecommendWordUseCaseFactory {
+
     public static RecommendView createRecommendView(AiController aiController, RecommendViewModel recommendViewModel, TextAreaView textAreaView) {
 
         return new RecommendView(aiController, recommendViewModel, textAreaView, null);
 
     }
+    /**
+     * @param viewManagerModel a ViewManagerModel
+     * @param recommendViewModel the recommendViewModel
+     * @return a RecommendController class
+     */
     static RecommendController createRecommendController(ViewManagerModel viewManagerModel,
                                                                 RecommendViewModel recommendViewModel) {
+
+
         RecommendDataAccessObject recommendDataAccessObject= new RecommendDataAccessObject();
         RecommendOutputBoundary recommendOutputBoundary = new RecommendPresenter(viewManagerModel, recommendViewModel);
         RecommendInteractor recommendInteractor = new RecommendInteractor(recommendDataAccessObject,recommendOutputBoundary);

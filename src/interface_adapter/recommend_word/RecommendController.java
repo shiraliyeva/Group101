@@ -10,6 +10,11 @@ public class RecommendController {
         this.recommendUseCaseInteractor = recommendUseCaseInteractor;
     }
 
+    /**
+     * @param text the word that you want to find a synonym for
+     * @return the synonym
+     */
+
     public String execute(String text) {
         RecommendInputData recommendInputData = new RecommendInputData(text);
         String recommendation = recommendUseCaseInteractor.execute(recommendInputData);

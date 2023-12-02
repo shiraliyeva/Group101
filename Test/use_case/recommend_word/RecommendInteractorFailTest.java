@@ -35,7 +35,7 @@ public class RecommendInteractorFailTest {
     }
 
     @Test
-    public void testSystemOutPrintln() {
+    public void testNoSynonym() {
         // Your code that calls System.out.println
         recommendInteractor.execute(new RecommendInputData("asdhiashdiosadsaiohasdodhi"));
 
