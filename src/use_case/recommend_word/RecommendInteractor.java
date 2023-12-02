@@ -12,7 +12,10 @@ public class RecommendInteractor implements RecommendInputBoundary {
     }
 
     @Override
-    public String execute(String recommendInputData) {
-        return recommendDataAccessObject.getRecommendation(recommendInputData);
+    public String execute(RecommendInputData recommendInputData) {
+
+        String recommendation=recommendDataAccessObject.getRecommendation(recommendInputData.getText());
+        RecommendOutputData recommendOutputData= new RecommendOutputData(recommendation);
+        return recommendOutputData.getRecommendation();
     }
 }

@@ -25,7 +25,6 @@ public class RecommendDataAccessObject implements RecommendDataAccessInterface {
 
 
             int responseCode = connection.getResponseCode();
-            System.out.println("Response Code: " + responseCode);
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String line;
@@ -56,7 +55,8 @@ public class RecommendDataAccessObject implements RecommendDataAccessInterface {
 
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Your highlighted word does not have a synonym, try it again but remove spaces from the start or the end of the word" );
+
         }
 
         return null;
