@@ -10,6 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import data_access.AiDataAccessObject;
+import data_access.SaveDataAccessObject;
 import interface_adapter.ViewManagerModel;
 
 
@@ -30,53 +31,54 @@ import view.TextAreaView;
 
 
 
+import javax.swing.*;
+import java.io.IOException;
+
 public class Main {
 
     public static void main(String[] args) throws IOException {
         // Main program window
-
         JFrame application = new JFrame("Vocabulary Builder");
         application.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+        // Card layout for managing different views
         CardLayout cardLayout = new CardLayout();
 
-        // The various View objects. Only one view is visible at a time.
+        // Panel to hold various views with card layout
         JPanel views = new JPanel(cardLayout);
         application.add(views);
 
-
-        // This keeps track of and manages which view is currently showing.
+        // View manager to keep track of and manage the current view
         ViewManagerModel viewManagerModel = new ViewManagerModel();
         new ViewManager(views, cardLayout, viewManagerModel);
+
+        // View models
         RecommendViewModel recommendViewModel = new RecommendViewModel();
-
         AiViewModel aiViewModel = new AiViewModel();
-
-        AiDataAccessObject aiDataAccessObject = new AiDataAccessObject();
-
-        AiController aiController = AiUseCaseFactory.createAiUseCase(viewManagerModel, aiViewModel, aiDataAccessObject);
-
         TextAreaViewModel textAreaViewModel = new TextAreaViewModel();
-
         ClearViewModel clearViewModel = new ClearViewModel();
         SaveViewModel saveViewModel = new SaveViewModel();
 
-        ClearController clearController = ClearUseCaseFactory.create(viewManagerModel, clearViewModel, textAreaViewModel);
-        SaveController saveController = SaveUseCaseFactory.create(viewManagerModel, saveViewModel);
+        // Data access objects
+        AiDataAccessObject aiDataAccessObject = new AiDataAccessObject();
+        SaveDataAccessObject saveDataAccessObject = new SaveDataAccessObject();
 
+        // Controllers
+        AiController aiController = AiUseCaseFactory.createAiUseCase(viewManagerModel, aiViewModel, aiDataAccessObject);
+        ClearController clearController = ClearUseCaseFactory.create(viewManagerModel, clearViewModel, textAreaViewModel);
+        SaveController saveController = SaveUseCaseFactory.create(viewManagerModel, saveViewModel, saveDataAccessObject);
         RecommendController recommendController = RecommendWordUseCaseFactory.createRecommendController(viewManagerModel, recommendViewModel);
 
+        // TextAreaView setup
         TextAreaView textAreaView = new TextAreaView(aiController, recommendController, clearController, saveController, textAreaViewModel);
-
         views.add(textAreaView, textAreaView.viewName);
 
+        // Set active view and update UI
         viewManagerModel.setActiveView(textAreaView.viewName);
         viewManagerModel.firePropertyChanged();
 
-
+        // Display the application
         application.pack();
         application.setVisible(true);
-
     }
-
 }

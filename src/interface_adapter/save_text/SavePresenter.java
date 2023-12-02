@@ -8,8 +8,6 @@ import use_case.save_text.SaveOutputData;
 public class SavePresenter implements SaveOutputBoundary {
     private final SaveViewModel saveViewModel;
 
-
-
     public SavePresenter(SaveViewModel saveViewModel) {
         this.saveViewModel = saveViewModel;
     }
@@ -17,9 +15,6 @@ public class SavePresenter implements SaveOutputBoundary {
     @Override
     public void prepareSaveView(SaveOutputData outputData) {
         this.saveViewModel.setContent(outputData.getOutputText());
-        final SaveDataAccessObject saveDataAccessObject = new SaveDataAccessObject();
-        SaveDataAccessObject.saveToPDF(outputData.getOutputText());
-
     }
 }
 
