@@ -11,10 +11,14 @@ import java.net.URL;
 
 import interface_adapter.ViewManagerModel;
 
+
 import interface_adapter.clear_text.ClearController;
 import interface_adapter.clear_text.ClearViewModel;
 import interface_adapter.save_text.SaveController;
 import interface_adapter.save_text.SaveViewModel;
+
+import interface_adapter.recommend_word.RecommendController;
+import interface_adapter.recommend_word.RecommendViewModel;
 import interface_adapter.text_area.TextAreaViewModel;
 
 import view.ViewManager;
@@ -39,20 +43,34 @@ public class Main {
         JPanel views = new JPanel(cardLayout);
         application.add(views);
 
+
         // This keeps track of and manages which view is currently showing.
         ViewManagerModel viewManagerModel = new ViewManagerModel();
         new ViewManager(views, cardLayout, viewManagerModel);
+        RecommendViewModel recommendViewModel = new RecommendViewModel();
+
 
 
         TextAreaViewModel textAreaViewModel = new TextAreaViewModel();
+
         ClearViewModel clearViewModel = new ClearViewModel();
         SaveViewModel saveViewModel = new SaveViewModel();
 
         ClearController clearController = ClearUseCaseFactory.create(viewManagerModel, clearViewModel, textAreaViewModel);
         SaveController saveController = SaveUseCaseFactory.create(viewManagerModel, saveViewModel);
 
-        TextAreaView textAreaView = new TextAreaView(clearController, saveController,textAreaViewModel);
+        RecommendController recommendController = RecommendWordUseCaseFactory.createRecommendController(viewManagerModel, recommendViewModel);
+
+
+        TextAreaView textAreaView = new TextAreaView(recommendController, clearController, saveController, textAreaViewModel);
+
+
+
+
+
+
         views.add(textAreaView, textAreaView.viewName);
+
 
         viewManagerModel.setActiveView(textAreaView.viewName);
         viewManagerModel.firePropertyChanged();
