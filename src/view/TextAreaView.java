@@ -1,14 +1,16 @@
 package view;
 
 import interface_adapter.ai_explanation.AiController;
+import interface_adapter.ai_explanation.AiViewModel;
 import interface_adapter.text_area.TextAreaViewModel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import interface_adapter.text_area.TextAreaState;
+
 
 public class TextAreaView extends JPanel implements ActionListener, PropertyChangeListener {
 
@@ -16,13 +18,11 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
 
     private final TextAreaViewModel textAreaViewModel;
     private final JTextArea textArea;
-    private final AiView aiView;
+    public TextAreaView(AiController aiController, TextAreaViewModel textAreaViewModel) {
 
-    public TextAreaView(AiController aiController, TextAreaViewModel textAreaViewModel, AiView aiView) {
-        this.aiView = aiView;
         this.textAreaViewModel = textAreaViewModel;
         this.textAreaViewModel.addPropertyChangeListener(this);
-//        this.aiView = aiView;
+
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
@@ -37,9 +37,8 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
             @Override
             public void actionPerformed(ActionEvent e) {
                 aiController.execute("chore", "task");
+                AiView aiView = new AiView(new AiViewModel());
                 aiView.updateDescriptionLabel();
-//                String previousText = textArea.getText();
-//                System.out.println("Text in the JTextArea: " + previousText);
                 String currentText = textArea.getText();
                 textAreaViewModel.storeCurrentText(currentText); // Store the current text
 

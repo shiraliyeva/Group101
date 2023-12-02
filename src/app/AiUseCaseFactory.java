@@ -4,15 +4,15 @@ import interface_adapter.ViewManagerModel;
 import interface_adapter.ai_explanation.AiController;
 import interface_adapter.ai_explanation.AiPresenter;
 import interface_adapter.ai_explanation.AiViewModel;
-import interface_adapter.text_area.TextAreaViewModel;
+
 import use_case.ai_explanation.AiDataAccessInterface;
 import use_case.ai_explanation.AiInputBoundary;
 import use_case.ai_explanation.AiInteractor;
 import use_case.ai_explanation.AiOutputBoundary;
+
 import view.AiView;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
 
 public class AiUseCaseFactory {
@@ -23,14 +23,11 @@ public class AiUseCaseFactory {
     public static AiView create(
             ViewManagerModel viewManagerModel,
             AiViewModel aiViewModel,
-            AiDataAccessInterface aiDataAccessObject,
-            TextAreaViewModel textAreaViewModel,
-            JPanel views,
-            CardLayout cardLayout) {
+            AiDataAccessInterface aiDataAccessObject) {
 
         try {
             AiController aiController = createAiUseCase(viewManagerModel, aiViewModel, aiDataAccessObject);
-            return new AiView(aiController, aiViewModel, textAreaViewModel, views,cardLayout);
+            return new AiView(aiViewModel);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Could not generate AI explanation.");
         }
@@ -38,12 +35,11 @@ public class AiUseCaseFactory {
         return null;
     }
 
-    private static AiController createAiUseCase(
+    public static AiController createAiUseCase(
             ViewManagerModel viewManagerModel,
             AiViewModel aiViewModel,
             AiDataAccessInterface aiDataAccessObject) throws IOException {
 
-        // Notice how we pass this method's parameters to the Presenter.
         AiOutputBoundary aiOutputBoundary = new AiPresenter(viewManagerModel, aiViewModel);
 
         AiInputBoundary aiInteractor = new AiInteractor(

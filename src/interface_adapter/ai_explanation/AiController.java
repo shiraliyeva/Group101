@@ -2,7 +2,6 @@ package interface_adapter.ai_explanation;
 
 import use_case.ai_explanation.AiInputBoundary;
 import use_case.ai_explanation.AiInputData;
-import view.TextAreaView;
 
 public class AiController {
     final AiInputBoundary responseAiUseCaseInteractor;

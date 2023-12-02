@@ -1,7 +1,6 @@
 package interface_adapter.ai_explanation;
 
 import interface_adapter.ViewModel;
-import interface_adapter.text_area.TextAreaState;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -34,6 +33,7 @@ public class AiViewModel extends ViewModel {
 
     public void setState(AiState state){
         this.state = state;
+        firePropertyChanged();
     }
 
     public AiState getState(){return state;}

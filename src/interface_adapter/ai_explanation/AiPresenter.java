@@ -3,8 +3,6 @@ package interface_adapter.ai_explanation;
 import interface_adapter.ViewManagerModel;
 import use_case.ai_explanation.AiOutputBoundary;
 import use_case.ai_explanation.AiOutputData;
-import view.AiView;
-
 
 public class AiPresenter implements AiOutputBoundary {
 

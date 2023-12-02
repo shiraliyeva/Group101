@@ -17,7 +17,4 @@ public class AiState {
         this.explanation = explanation;
     }
 
-//    public String toString() {
-//        return "AiState{" + "explanation=" + explanation'}';
-//    }
 }
