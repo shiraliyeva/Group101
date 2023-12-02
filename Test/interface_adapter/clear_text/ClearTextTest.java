@@ -1,3 +1,5 @@
+package interface_adapter.clear_text;
+
 import interface_adapter.clear_text.ClearController;
 import interface_adapter.clear_text.ClearPresenter;
 import interface_adapter.clear_text.ClearViewModel;
@@ -42,6 +44,7 @@ public class ClearTextTest {
     SaveOutputBoundary saveOutputBoundary = new SavePresenter(saveViewModel);
 
     SaveInputBoundary saveUseCaseInteractor = new SaveInteractor(saveOutputBoundary);
+    //TODO: modify the constructor here
 
     private JPanel findButtonPanel(TextAreaView textAreaView) {
         JPanel mainPanel = (JPanel) textAreaView.getComponent(0);
@@ -56,6 +59,7 @@ public class ClearTextTest {
         SaveController saveController = new SaveController(saveUseCaseInteractor);
 
         TextAreaView textAreaView = new TextAreaView(clearController,saveController, textAreaViewModel);
+        //TODO: modify the constructor
 
         JPanel buttonPanel = findButtonPanel(textAreaView);
         clearButton = (JButton) buttonPanel.getComponent(0);

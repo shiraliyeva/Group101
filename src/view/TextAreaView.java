@@ -21,17 +21,6 @@ import java.awt.event.MouseAdapter;
 
 import interface_adapter.recommend_word.RecommendController;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 public class TextAreaView extends JPanel implements ActionListener, PropertyChangeListener {
 

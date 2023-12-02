@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.awt.*;
-import java.util.concurrent.Executor;
 
 public class RecommendView extends JPanel implements ActionListener, PropertyChangeListener{
     private final RecommendViewModel recommendViewModel;
