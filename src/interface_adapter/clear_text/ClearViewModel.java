@@ -2,7 +2,6 @@ package interface_adapter.clear_text;
 
 import use_case.clear_text.ClearOutputData;
 
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class ClearViewModel{

@@ -2,12 +2,7 @@ package app;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 import data_access.AiDataAccessObject;
 import data_access.SaveDataAccessObject;
@@ -29,10 +24,6 @@ import view.ViewManager;
 import view.TextAreaView;
 
 
-
-
-import javax.swing.*;
-import java.io.IOException;
 
 public class Main {
 

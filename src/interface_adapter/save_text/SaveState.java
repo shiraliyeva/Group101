@@ -1,6 +1,6 @@
 package interface_adapter.save_text;
 
-public class SaveState {
+public class SaveState { //TODO: may want to remove this since there is no usages
     private final boolean saveSuccessful;
     private final String errorMessage;
 
