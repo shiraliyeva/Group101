@@ -1,9 +1,10 @@
+package View.Save_clear;
+
 import javax.swing.*;
 import java.awt.*;
 import app.Main;
 import static org.junit.Assert.assertEquals;
 
-import data_access.SaveDataAccessObject;
 import org.junit.Before;
 
 public class ClearSaveViewTest {

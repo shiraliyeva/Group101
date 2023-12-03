@@ -1,3 +1,5 @@
+package use_case.save_text;
+
 import data_access.SaveDataAccessObject;
 import interface_adapter.save_text.SavePresenter;
 import interface_adapter.save_text.SaveViewModel;
@@ -10,7 +12,7 @@ import use_case.save_text.*;
 import javax.swing.*;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertNotNull;
 
 public class TestSaveInteractor {
     private SaveInputBoundary saveInteractor;
@@ -36,5 +38,7 @@ public class TestSaveInteractor {
         SaveInputData saveInputData = new SaveInputData(textArea.getText());
         saveInteractor.execute(saveInputData);
         assertEquals("Please input your text here...", textAreaViewModel.getCurrentText());
+        assertNotNull(saveInteractor);
+
     }
 }

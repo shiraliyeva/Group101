@@ -1,3 +1,5 @@
+package use_case.clear_text;
+
 import interface_adapter.clear_text.ClearPresenter;
 import interface_adapter.clear_text.ClearViewModel;
 import interface_adapter.text_area.TextAreaViewModel;
@@ -15,6 +17,7 @@ public class TestClearInteractor {
     public void setup() {
         TextAreaViewModel textAreaViewModel = new TextAreaViewModel();
         ClearViewModel clearViewModel = new ClearViewModel();
+
         ClearOutputBoundary clearOutputBoundary = new ClearPresenter(clearViewModel, textAreaViewModel);
         this.clearInteractor = new ClearInteractor(clearOutputBoundary);
         this.textAreaViewModel = textAreaViewModel;
@@ -25,5 +28,6 @@ public class TestClearInteractor {
         ClearInputData clearInputData = new ClearInputData();
         clearInteractor.execute(clearInputData);
         assertEquals("", textAreaViewModel.getCurrentText());
+        assertNotNull(clearInteractor);
     }
 }

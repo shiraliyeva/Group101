@@ -1,3 +1,4 @@
+package interface_adapter.clear_text;
 
 import interface_adapter.clear_text.*;
 import interface_adapter.text_area.TextAreaViewModel;
@@ -7,6 +8,7 @@ import use_case.clear_text.ClearOutputBoundary;
 import use_case.clear_text.ClearInputBoundary;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 
 public class ClearControllerTest {
@@ -30,5 +32,6 @@ public class ClearControllerTest {
     public void executeTestSuccess() {
         clearController.execute();
         assertEquals("", textAreaViewModel.getCurrentText());
+        assertNotNull(clearController);
     }
 }
