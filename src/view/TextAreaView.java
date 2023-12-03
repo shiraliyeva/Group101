@@ -22,7 +22,7 @@ import java.awt.event.MouseAdapter;
 import interface_adapter.recommend_word.RecommendController;
 
 
-public class TextAreaView extends JPanel implements ActionListener, PropertyChangeListener {
+public class TextAreaView extends JPanel{
 
     public final String viewName = "text area";
     private final AiController aiController;
@@ -40,7 +40,7 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
         this.clearController = clearController;
         this.saveController = saveController;
         this.textAreaViewModel = textAreaViewModel;
-        this.textAreaViewModel.addPropertyChangeListener(this);
+//        this.textAreaViewModel.addPropertyChangeListener(this);
 
         // Create button panel
         JButton clearButton = createButton(TextAreaViewModel.CLEAR_BUTTON_LABEL);
@@ -160,12 +160,12 @@ public class TextAreaView extends JPanel implements ActionListener, PropertyChan
         // creates a new View with the recommended word
     }
 
-    public void propertyChange(PropertyChangeEvent evt) {
-        // Handle property change if needed
-    }
-
-    public void actionPerformed(ActionEvent evt) {
-        // Handle action event if needed
-    }
+//    public void propertyChange(PropertyChangeEvent evt) {
+//        // Handle property change if needed
+//    }
+//
+//    public void actionPerformed(ActionEvent evt) {
+//        // Handle action event if needed
+//    }
 }
 

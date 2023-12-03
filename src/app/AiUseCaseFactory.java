@@ -31,7 +31,6 @@ public class AiUseCaseFactory {
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Could not generate AI explanation.");
         }
-
         return null;
     }
 
