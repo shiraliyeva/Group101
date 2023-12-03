@@ -1,6 +1,5 @@
 package interface_adapter.save_text;
 
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class SaveViewModel {
@@ -8,15 +7,17 @@ public class SaveViewModel {
 
     public static final String SAVE_BUTTON_LABEL = "Save";
 
-    private String content;
+    public String content;
 
-    public String getContent() {
-        return content;
-    }
+
 
     public void setContent(String content) {
         this.content = content;
         firePropertyChanged();
+    }
+
+    public String getContent() {
+        return content;
     }
 
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
