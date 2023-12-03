@@ -8,10 +8,10 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-public class AiView extends JPanel implements ActionListener, PropertyChangeListener {
+public class AiView extends JPanel{
     public final String viewName = "ai explanation";
     public final AiViewModel aiViewModel;
-    private final JTextArea descriptionArea;
+    final JTextArea descriptionArea;
 
     public AiView(AiViewModel aiViewModel){
         this.aiViewModel = aiViewModel;
@@ -37,13 +37,29 @@ public class AiView extends JPanel implements ActionListener, PropertyChangeList
         descriptionArea.setText(aiViewModel.getExplanation());
     }
 
-    public void propertyChange(PropertyChangeEvent evt) {
+//    public void propertyChange(PropertyChangeEvent evt) {
+//
+//    }
+//
+//    public void actionPerformed(ActionEvent evt) {
+//
+//    }
+
+    public String getDescriptionAreaText() {
+        return descriptionArea.getText();
     }
 
-    public void actionPerformed(ActionEvent evt) {
-
+    public boolean isDescriptionAreaLineWrap() {
+        return descriptionArea.getLineWrap();
     }
 
+    public boolean isDescriptionAreaWrapStyleWord() {
+        return descriptionArea.getWrapStyleWord();
+    }
+
+    public boolean isDescriptionAreaEditable() {
+        return descriptionArea.isEditable();
+    }
 
 }
 

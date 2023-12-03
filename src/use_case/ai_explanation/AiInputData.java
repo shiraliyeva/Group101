@@ -9,11 +9,11 @@ public class AiInputData {
         this.suggestedWord = suggestedWord;
     }
 
-    String getUsersWord(){
+    public String getUsersWord(){
         return usersWord;
     }
 
-    String getSuggestedWord(){
+    public String getSuggestedWord(){
         return suggestedWord;
     }
 }
