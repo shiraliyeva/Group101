@@ -51,24 +51,8 @@ public class SaveDataAccessObject implements SaveDataAccessInterface {
             if (metrics.stringWidth(line) <= width) {
                 g2d.drawString(line, curX, curY);
                 curY += lineHeight;
-            } else {
-                String[] words = line.split(" ");
-                StringBuilder currentLine = new StringBuilder();
-
-                for (String word : words) {
-                    if (metrics.stringWidth(currentLine + word) <= width) {
-                        currentLine.append(word).append(" ");
-                    } else {
-                        g2d.drawString(currentLine.toString(), curX, curY);
-                        curY += lineHeight;
-                        currentLine = new StringBuilder(word + " ");
-                    }
-                }
-
-                g2d.drawString(currentLine.toString(), curX, curY);
-                curY += lineHeight;
+            }
             }
         }
-    }
 
 }
