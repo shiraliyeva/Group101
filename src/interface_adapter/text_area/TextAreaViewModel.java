@@ -33,6 +33,10 @@ public class TextAreaViewModel extends ViewModel {
         support.addPropertyChangeListener(listener);
     }
 
+    public TextAreaState getState() {
+        return state;
+    }
+
     public static String currentText = "Please input your text here...";
 
     public void storeCurrentText(String text) {
@@ -41,10 +45,6 @@ public class TextAreaViewModel extends ViewModel {
 
     public String getCurrentText(){
         return currentText;
-    }
-
-    public TextAreaState getState() {
-        return state;
     }
 
 }

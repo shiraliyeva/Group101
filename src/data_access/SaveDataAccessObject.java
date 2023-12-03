@@ -1,19 +1,16 @@
 package data_access;
 
+import use_case.save_text.SaveDataAccessInterface;
+
 import java.awt.*;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 
-public class SaveDataAccessObject {
+public class SaveDataAccessObject implements SaveDataAccessInterface {
 
-
-    public SaveDataAccessObject(){
-
-    }
-
-    public static void saveToPDF(String text) {
+    public void saveToPDF(String text) {
         PrinterJob job = PrinterJob.getPrinterJob();
         job.setJobName("Save to PDF/Print");
 

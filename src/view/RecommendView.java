@@ -1,5 +1,7 @@
 package view;
 
+import interface_adapter.ai_explanation.AiController;
+import interface_adapter.ai_explanation.AiViewModel;
 import interface_adapter.recommend_word.RecommendViewModel;
 
 
@@ -9,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.awt.*;
+import java.util.concurrent.Executor;
 
 public class RecommendView extends JPanel implements ActionListener, PropertyChangeListener{
     private final RecommendViewModel recommendViewModel;
@@ -17,7 +20,7 @@ public class RecommendView extends JPanel implements ActionListener, PropertyCha
     private String recommendation;
 
 
-    public RecommendView(RecommendViewModel recommendViewModel, TextAreaView textAreaView, String recommendation) {
+    public RecommendView(AiController aiController,RecommendViewModel recommendViewModel, TextAreaView textAreaView, String recommendation) {
         this.recommendation=recommendation;
 
         JFrame frame = new JFrame("Recommendation");
@@ -53,6 +56,14 @@ public class RecommendView extends JPanel implements ActionListener, PropertyCha
             }
         });
 
+        aiButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                aiController.execute(textAreaView.textArea.getSelectedText(), recommendation);
+                AiView aiView = new AiView(new AiViewModel());
+                aiView.updateDescriptionLabel();
+            }
+        });
 
 
 

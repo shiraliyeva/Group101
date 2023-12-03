@@ -13,7 +13,6 @@ import use_case.clear_text.ClearOutputBoundary;
 public class ClearUseCaseFactory {
      static ClearController create(ViewManagerModel viewManagerModel, ClearViewModel clearViewModel, TextAreaViewModel textAreaViewModel) {
 
-
         ClearOutputBoundary clearOutputBoundary = new ClearPresenter(clearViewModel, textAreaViewModel );
 
         ClearInputBoundary clearUseCaseInteractor = new ClearInteractor(clearOutputBoundary);

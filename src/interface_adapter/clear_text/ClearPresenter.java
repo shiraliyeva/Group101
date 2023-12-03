@@ -22,7 +22,6 @@ public class ClearPresenter implements ClearOutputBoundary {
     public void prepareClearView(ClearOutputData clearOutputData) {
         clearViewModel.firePropertyChanged();
         viewManagerModel.firePropertyChanged();
-//        textArea.setText(clearOutputData.setData());
         textAreaViewModel.storeCurrentText(clearOutputData.setData());
     }
     }

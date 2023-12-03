@@ -5,10 +5,10 @@ public class RecommendInteractor implements RecommendInputBoundary {
     private final RecommendDataAccessInterface recommendDataAccessObject;
     final RecommendOutputBoundary recommendPresenter;
 
-    public RecommendInteractor(RecommendDataAccessInterface recommendDataAccessObject, RecommendOutputBoundary recommendOutputBoundary) {
+    public RecommendInteractor(RecommendDataAccessInterface recommendDataAccessObject, RecommendOutputBoundary recommendPresenter) {
         this.recommendDataAccessObject = recommendDataAccessObject;
 
-        this.recommendPresenter = recommendOutputBoundary;
+        this.recommendPresenter = recommendPresenter;
     }
 
     @Override
@@ -16,6 +16,7 @@ public class RecommendInteractor implements RecommendInputBoundary {
 
         String recommendation=recommendDataAccessObject.getRecommendation(recommendInputData.getText());
         RecommendOutputData recommendOutputData= new RecommendOutputData(recommendation);
+        recommendPresenter.prepareRecommendView(recommendOutputData);
         return recommendOutputData.getRecommendation();
     }
 }
