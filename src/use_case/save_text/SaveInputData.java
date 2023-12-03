@@ -1,5 +1,4 @@
 package use_case.save_text;
-import entity.Text;
 
 public class SaveInputData {
     private final String text;

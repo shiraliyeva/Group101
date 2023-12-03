@@ -1,5 +1,4 @@
 package interface_adapter.save_text;
-;
 import use_case.save_text.SaveOutputBoundary;
 import use_case.save_text.SaveOutputData;
 

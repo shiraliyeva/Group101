@@ -16,10 +16,6 @@ public class SaveViewModel {
         firePropertyChanged();
     }
 
-    public String getContent() {
-        return content;
-    }
-
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     void firePropertyChanged()  {
