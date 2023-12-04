@@ -23,7 +23,7 @@ public class RecommendWordUseCaseFactory {
      * @param recommendViewModel the recommendViewModel
      * @return a RecommendController class
      */
-    static RecommendController createRecommendController(ViewManagerModel viewManagerModel,
+    public static RecommendController createRecommendController(ViewManagerModel viewManagerModel,
                                                                 RecommendViewModel recommendViewModel) {
 
 

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class AiIUseCaseTest {
+class AiUseCaseTest {
 
     @Test
     void testInvokeDataAccessAndPresenter() {
