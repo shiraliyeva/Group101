@@ -12,11 +12,14 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.awt.*;
 
-public class RecommendView extends JPanel implements ActionListener, PropertyChangeListener{
+public class RecommendView extends JPanel{
     private final RecommendViewModel recommendViewModel;
     private final TextAreaView textAreaView;
     public final String viewName="Recommendation";
     private String recommendation;
+    private JLabel labelTest;
+    private JButton replaceButtonTest;
+    private JButton aiButtonTest;
 
 
     public RecommendView(AiController aiController,RecommendViewModel recommendViewModel, TextAreaView textAreaView, String recommendation) {
@@ -26,9 +29,9 @@ public class RecommendView extends JPanel implements ActionListener, PropertyCha
 
         frame.setSize(500,500);
         JLabel recommend = new JLabel(recommendation);
+        this.labelTest= recommend;
 
         this.recommendViewModel=recommendViewModel;
-        this.recommendViewModel.addPropertyChangeListener(this);
         this.textAreaView=textAreaView;
         JPanel mainPanel = new JPanel();
         JPanel buttonPanel = new JPanel();
@@ -43,6 +46,8 @@ public class RecommendView extends JPanel implements ActionListener, PropertyCha
         frame.getContentPane().add(new JScrollPane(mainPanel), BorderLayout.CENTER);
         mainPanel.add(recommend, BorderLayout.NORTH);
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
+        replaceButtonTest=replaceButton;
+        aiButtonTest=aiButton;
 
         frame.pack();
         frame.setVisible(true);
@@ -68,14 +73,20 @@ public class RecommendView extends JPanel implements ActionListener, PropertyCha
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
 
+
+    public String getRecommendation() {
+        return recommendation;
+    }
+    public JLabel getTest() {
+        return labelTest;
     }
 
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-
+    public JButton getReplaceButtonTest() {
+        return replaceButtonTest;
+    }
+    public JButton getAiButtonTest() {
+        return aiButtonTest;
     }
 }
 

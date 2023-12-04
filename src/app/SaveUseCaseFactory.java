@@ -11,8 +11,8 @@ import use_case.save_text.SaveInteractor;
 import use_case.save_text.SaveOutputBoundary;
 
 public class SaveUseCaseFactory {
-    static SaveController create(ViewManagerModel viewManagerModel, SaveViewModel saveViewModel,
-                                 SaveDataAccessInterface saveDataAccessObject){
+    public static SaveController create(ViewManagerModel viewManagerModel, SaveViewModel saveViewModel,
+                                        SaveDataAccessInterface saveDataAccessObject){
 
 
         SaveOutputBoundary saveOutputBoundary = new SavePresenter(saveViewModel);
