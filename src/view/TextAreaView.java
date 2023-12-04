@@ -20,7 +20,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
 
 import interface_adapter.recommend_word.RecommendController;
-
+import view.command.ClearCommand;
+import view.command.SaveCommand;
 
 public class TextAreaView extends JPanel{
 
@@ -78,11 +79,14 @@ public class TextAreaView extends JPanel{
         buttonPanel.add(clearButton);
         buttonPanel.add(saveButton);
 
+        ClearCommand clearCommand = new ClearCommand(clearController);
+        SaveCommand saveCommand = new SaveCommand(saveController, "");
+
         // Set action listeners
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                clearController.execute();
+                clearCommand.execute();
                 textArea.setText(textAreaViewModel.getCurrentText());
             }
         });
@@ -90,9 +94,9 @@ public class TextAreaView extends JPanel{
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SaveInputData saveInputData = new SaveInputData(textArea.getText());
-                saveController.execute(saveInputData.getText());
-                textArea.setText("Text saved/printed");
+//                SaveInputData saveInputData = new SaveInputData(textArea.getText());
+                saveCommand.text = textArea.getText();
+                saveCommand.execute();
             }
         });
 
