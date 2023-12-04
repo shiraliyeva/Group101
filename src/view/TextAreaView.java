@@ -12,7 +12,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
+import use_case.save_text.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
 
@@ -149,8 +152,17 @@ public class TextAreaView extends JPanel{
 
 
     private void handleRecommendClick(String text) {
-        String recommendation = recommendController.execute(text);
+        String recommendation = recommendController.execute(text); // generates a synonym and stores it to recommendation
+        if (recommendation==null) {
+
+            JOptionPane.showMessageDialog(null,
+                    "Your highlighted word does not have a synonym, try it again but remove spaces from the start or the end of the word");
+
+        }
+        else {
         new RecommendView(aiController, new RecommendViewModel(), this, recommendation);
+        }
+        // creates a new View with the recommended word
     }
 
 //    public void propertyChange(PropertyChangeEvent evt) {

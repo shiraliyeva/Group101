@@ -1,6 +1,4 @@
 package interface_adapter.save_text;
-
-import data_access.SaveDataAccessObject;
 import use_case.save_text.SaveOutputBoundary;
 import use_case.save_text.SaveOutputData;
 
@@ -17,4 +15,3 @@ public class SavePresenter implements SaveOutputBoundary {
         this.saveViewModel.setContent(outputData.getOutputText());
     }
 }
-

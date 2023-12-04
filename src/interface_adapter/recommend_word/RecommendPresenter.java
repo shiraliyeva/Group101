@@ -19,6 +19,11 @@ public class RecommendPresenter implements RecommendOutputBoundary {
         this.recommendViewModel = recommendViewModel;
 
     }
+
+    /**
+     *
+     * @param recommendation a RecommendOutputData that contains the recommendation
+     */
     public void prepareRecommendView(RecommendOutputData recommendation) {
 
         RecommendState recommendState = recommendViewModel.getState();
