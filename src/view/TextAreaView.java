@@ -92,6 +92,7 @@ public class TextAreaView extends JPanel{
             public void actionPerformed(ActionEvent e) {
                 SaveInputData saveInputData = new SaveInputData(textArea.getText());
                 saveController.execute(saveInputData.getText());
+                textArea.setText("Text saved/printed");
             }
         });
 

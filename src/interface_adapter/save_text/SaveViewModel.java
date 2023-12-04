@@ -7,11 +7,9 @@ public class SaveViewModel {
 
     public static final String SAVE_BUTTON_LABEL = "Save";
 
-    private String content;
+    public String content;
 
-    public String getContent() {
-        return content;
-    }
+
 
     public void setContent(String content) {
         this.content = content;
