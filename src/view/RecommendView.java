@@ -3,6 +3,7 @@ package view;
 import interface_adapter.ai_explanation.AiController;
 import interface_adapter.ai_explanation.AiViewModel;
 import interface_adapter.recommend_word.RecommendViewModel;
+import view.command.AiCommand;
 
 
 import javax.swing.*;
@@ -55,10 +56,13 @@ public class RecommendView extends JPanel implements ActionListener, PropertyCha
             }
         });
 
+        AiCommand aiCommand = new AiCommand(aiController, textAreaView.textArea.getSelectedText(), recommendation);
+
         aiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                aiController.execute(textAreaView.textArea.getSelectedText(), recommendation);
+                aiCommand.execute();
+//                aiController.execute(textAreaView.textArea.getSelectedText(), recommendation);
                 AiView aiView = new AiView(new AiViewModel());
                 aiView.updateDescriptionLabel();
             }
